@@ -18,11 +18,6 @@ public class DatabaseController {
     @Autowired
     DatabaseService databaseService;
 
-    @RequestMapping(value = "upload", method = RequestMethod.GET)
-    public String uploadDatabaseForm(){
-        return "database/upload";
-    }
-
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     public String uploadDatabase(@RequestParam("file") MultipartFile file){
         databaseService.prepareDatabase();

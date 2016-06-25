@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorator="base" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Home - Statistics</title>
+    </head>
+    <div layout:fragment="content">
+        <h1>Statistics</h1>
+        <h4 th:inline="text">Three diseases with most symptoms</h4>
+        <div th:each="disease : ${mostSymptoms}">
+            <p th:text="${disease.getName()}"></p>
+        </div>
+        <h4 th:inline="text">Three most popular symptoms</h4>
+        <h4 th:inline="text">Unique symptoms in database: [[${symptomCount}]]</h4>
+    </div>
+</html>

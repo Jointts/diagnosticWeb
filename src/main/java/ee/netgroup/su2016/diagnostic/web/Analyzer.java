@@ -46,7 +46,6 @@ public class Analyzer {
 
             linesCount++;
 
-            // TODO: line parsing logic ...
             String[] seperatedInfo = line.split(", ");
             Disease disease = new Disease();
             String diseaseName = seperatedInfo[0];

@@ -1,19 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorator="base">
-<head>
-    <title>Hospital - Home</title>
-</head>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorator="base"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Hospital - Home</title>
+    </head>
     <div layout:fragment="content">
-        <h1>Welcome!</h1>
-        <h2>Choose your action</h2>
-        <div class="action">
-
+        <h1 class="row">Welcome!</h1>
+        <h4 class="row">Please choose an action</h4>
+        <div class="row action-container">
+            <a th:href="@{/statistics}">
+                <div class="action col-xs-3">
+                    <img src="img/statistics.png"/>
+                    <div>Show statistics</div>
+                </div>
+            </a>
+            <div class="action col-xs-3">
+                <img src="img/diagnose.png"/>
+                <div>Diagnose</div>
+            </div>
+            <div class="action col-xs-3">
+                <img src="img/diagnose_interactive.png"/>
+                <div>Interactive diagnose</div>
+            </div>
         </div>
-        <div class="action">
-
-        </div>
-        <div class="action">
-
+        <div class="upload-form row">
+            <h4>Upload a new database (old one will be truncated)</h4>
+            <form method="post" enctype="multipart/form-data" class="dropzone" id="dropzone" action="upload">
+                <div class="dz-message"><span>Upload .csv file</span></div>
+            </form>
         </div>
     </div>
 </html>

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-public class MainController {
+public class DashboardController {
 
     @RequestMapping(path = "/")
     public String getIndex(Model model){

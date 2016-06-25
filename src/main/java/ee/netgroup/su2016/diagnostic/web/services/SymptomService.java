@@ -1,15 +1,15 @@
 package ee.netgroup.su2016.diagnostic.web.services;
 
+import ee.netgroup.su2016.diagnostic.web.dto.SymptomDTO;
 import ee.netgroup.su2016.diagnostic.web.models.Disease;
 import ee.netgroup.su2016.diagnostic.web.models.Symptom;
 import ee.netgroup.su2016.diagnostic.web.repositories.DiseaseRepository;
 import ee.netgroup.su2016.diagnostic.web.repositories.SymptomRepository;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by pagulane on 23.06.2016.
@@ -29,25 +29,21 @@ public class SymptomService {
     }
 
     public List<Symptom> getThreePopularSymptoms(){
-        HashMap<String, Integer> symptomMap = new HashMap<>();
-        for(Disease disease: diseaseRepository.findAll()){
-            String diseaseName = disease.getName();
-            if(symptomMap.containsKey(diseaseName)){
-                symptomMap.put(diseaseName, symptomMap.get(diseaseName) + 1);
-                continue;
-            }
-            symptomMap.put(disease.getName(), 1);
-        }
         return null;
     }
 
-    public List<Symptom> getThreeDiseasesWithMostSymptoms(){
-        List<Integer> valueList = new ArrayList<>();
-        List<Disease> diseaseList = new ArrayList<>();
-        HashMap<String, Integer> symptomMap = new HashMap<>();
+    public Object[] getThreeDiseasesWithMostSymptoms(){
+        TreeSet<Disease> diseases = new TreeSet<>((a, b) -> {
+            int s1 = a.getSymptoms().size();
+            int s2 = b.getSymptoms().size();
+            if(s1 == s2){
+                return a.getName().compareTo(b.getName());
+            }
+            else return s1 < s2  ? 1 : -1;
+        });
         for(Disease disease: diseaseRepository.findAll()){
-            disease.getSymptoms().size();
+            diseases.add(disease);
         }
-        return null;
+        return Arrays.copyOfRange(diseases.toArray(), 0, 3);
     }
 }
