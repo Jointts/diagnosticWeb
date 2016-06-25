@@ -23,14 +23,8 @@ public class DiseaseController {
     @Autowired
     SymptomRepository symptomRepository;
 
-    @Autowired
-    DiseaseRepository diseaseRepository;
-
     @RequestMapping(value = "/symptoms/", method = RequestMethod.GET)
     public String getDiseaseList(Model model){
-        Symptom symptom = new Symptom();
-        symptom.setName("Test Disease");
-        symptomRepository.save(symptom);
         model.addAttribute("symptoms", symptomRepository.findAll());
         return "symptoms/list";
     }

@@ -17,7 +17,10 @@ public class Disease {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany
+    @Setter @Getter
+    private String name;
+
+    @ManyToMany
     @Setter @Getter
     private List<Symptom> symptoms;
 
