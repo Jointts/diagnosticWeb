@@ -13,6 +13,7 @@ import javax.persistence.*;
 public class Symptom {
 
     @Id
+    @Setter @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 

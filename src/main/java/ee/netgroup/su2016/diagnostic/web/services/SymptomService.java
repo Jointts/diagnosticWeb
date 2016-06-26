@@ -46,4 +46,8 @@ public class SymptomService {
         }
         return Arrays.copyOfRange(diseases.toArray(), 0, 3);
     }
+
+    public Iterable<Symptom> getSymptomList(){
+        return symptomRepository.findAll();
+    }
 }

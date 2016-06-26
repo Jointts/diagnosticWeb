@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorator="base"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Hospital - Diagnose</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+        <script src="js/diagnose.js"></script>
+    </head>
+    <div layout:fragment="content">
+        <h1>Diagnose</h1>
+        <h4>Please select patients symptom(s)</h4>
+        <form method="post" class="form-horizontal diagnose-form">
+            <select class="form-control" th:attr="multiple=true" name="symptomList">
+                <option th:attr="value=${symptom.getId()}" th:each="symptom : ${symptomList}" th:inline="text">[[${symptom.getName()}]]</option>
+            </select>
+        </form>
+        <h4>Possible diseases for selected symptoms</h4>
+        <div class="diagnose-result">
+            No disease matches any of these symptoms.
+        </div>
+    </div>
 </html>

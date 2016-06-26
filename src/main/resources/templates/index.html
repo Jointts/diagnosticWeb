@@ -2,7 +2,7 @@
 <html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorator="base"
       xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Hospital - Home</title>
+        <title>Hospital - Dashboard</title>
     </head>
     <div layout:fragment="content">
         <h1 class="row">Welcome!</h1>
@@ -14,10 +14,12 @@
                     <div>Show statistics</div>
                 </div>
             </a>
-            <div class="action col-xs-3">
-                <img src="img/diagnose.png"/>
-                <div>Diagnose</div>
-            </div>
+            <a th:href="@{diagnose}">
+                <div class="action col-xs-3">
+                    <img src="img/diagnose.png"/>
+                    <div>Diagnose</div>
+                </div>
+            </a>
             <div class="action col-xs-3">
                 <img src="img/diagnose_interactive.png"/>
                 <div>Interactive diagnose</div>

@@ -2,15 +2,30 @@
 <html lang="en" layout:decorator="base" xmlns:layout="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Home - Statistics</title>
+        <title>Hospital - Statistics</title>
     </head>
     <div layout:fragment="content">
         <h1>Statistics</h1>
         <h4 th:inline="text">Three diseases with most symptoms</h4>
-        <div th:each="disease : ${mostSymptoms}">
-            <p th:text="${disease.getName()}"></p>
-        </div>
+        <table class="table table-hover statistics-table">
+            <tr>
+                <th>Disease name</th>
+            </tr>
+            <tr th:each="disease : ${mostSymptoms}">
+                <td th:text="${disease.getName()}"></td>
+            </tr>
+        </table>
         <h4 th:inline="text">Three most popular symptoms</h4>
-        <h4 th:inline="text">Unique symptoms in database: [[${symptomCount}]]</h4>
+        <table class="table table-hover statistics-table">
+            <tr>
+                <th>Disease name</th>
+            </tr>
+            <tr th:each="disease : ${mostSymptoms}">
+                <td th:text="${disease.getName()}"></td>
+            </tr>
+        </table>
+        <div class="panel panel-default">
+            <div class="panel-body" th:inline="text">Unique symptoms in database: [[${symptomCount}]]</div>
+        </div>
     </div>
 </html>

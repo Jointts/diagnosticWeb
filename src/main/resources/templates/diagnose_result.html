@@ -1,0 +1,13 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <table class="table table-active diagnose-table" th:if="${diseaseList != null}">
+        <tr>
+            <th>Disease name</th>
+        </tr>
+        <tr th:each="disease: ${diseaseList}" th:inline="text">
+            <td>[[${disease.getName()}]]</td>
+        </tr>
+    </table>
+    <p th:if="${diseaseList == null}">
+        No disease matches any of these symptoms.
+    </p>
+</html>

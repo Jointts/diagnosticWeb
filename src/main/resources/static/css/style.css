@@ -106,3 +106,24 @@ body {
 .action:hover{
     background-color: #ececec;
 }
+
+.statistics-table{
+    margin-top: 40px;
+}
+
+.panel{
+    margin-top: 45px;
+    background-color: #efefef;
+}
+
+.dropzone:hover{
+    background-color: #ececec;
+}
+
+.diagnose-form{
+    margin-top: 50px;
+}
+
+.diagnose-table{
+    margin-top: 50px;
+}
