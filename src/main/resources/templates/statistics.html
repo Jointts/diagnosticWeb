@@ -20,8 +20,8 @@
             <tr>
                 <th>Disease name</th>
             </tr>
-            <tr th:each="disease : ${mostSymptoms}">
-                <td th:text="${disease.getName()}"></td>
+            <tr th:each="symptom : ${popularSymptoms}">
+                <td th:text="${#strings.capitalize(symptom.getName())}"></td>
             </tr>
         </table>
         <div class="panel panel-default">

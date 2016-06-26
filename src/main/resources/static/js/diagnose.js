@@ -18,3 +18,19 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $diagnoseForm = $(".diagnose-interactive-form select");
+    $diagnoseForm.select2();
+    $diagnoseForm.on("change", function () {
+        $.ajax({
+            type: "POST",
+            data: $(".diagnose-interactive-form").serialize(),
+            success: function(data) {
+                $(".diagnose-result").html(data);
+            }
+        });
+    });
+});
+
+
+

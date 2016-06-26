@@ -3,6 +3,7 @@ package ee.netgroup.su2016.diagnostic.web.controllers;
 import ee.netgroup.su2016.diagnostic.web.models.Disease;
 import ee.netgroup.su2016.diagnostic.web.models.Symptom;
 import ee.netgroup.su2016.diagnostic.web.repositories.DiseaseRepository;
+import ee.netgroup.su2016.diagnostic.web.repositories.PatientRepository;
 import ee.netgroup.su2016.diagnostic.web.repositories.SymptomRepository;
 import ee.netgroup.su2016.diagnostic.web.services.SymptomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class DiagnoseController {
     @Autowired
     DiseaseRepository diseaseRepository;
 
+    @Autowired
+    PatientRepository patientRepository;
+
     @RequestMapping(path = "diagnose")
     public String usualDiagnose(Model model){
         model.addAttribute("symptomList", symptomService.getSymptomList());
@@ -54,5 +58,11 @@ public class DiagnoseController {
             model.addAttribute("diseaseList", diseaseList);
         }
         return "diagnose_result";
+    }
+
+    @RequestMapping(path = "diagnose-interactive")
+    public String interactiveDiagnose(Model model){
+        model.addAttribute("patientList", patientRepository.findAll());
+        return "diagnose_interactive";
     }
 }

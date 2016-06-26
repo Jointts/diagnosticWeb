@@ -14,6 +14,7 @@ import java.util.List;
 public class Patient {
 
     @Id
+    @Setter @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 

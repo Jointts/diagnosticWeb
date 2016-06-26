@@ -21,7 +21,7 @@ public class StatisticController {
     public String getStatistics(Model model){
         model.addAttribute("symptomCount", symptomService.countSymptoms());
         model.addAttribute("mostSymptoms", symptomService.getThreeDiseasesWithMostSymptoms());
-        symptomService.getThreePopularSymptoms();
+        model.addAttribute("popularSymptoms", symptomService.getThreePopularSymptoms());
         return "statistics";
     }
 }

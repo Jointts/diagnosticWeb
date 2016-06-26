@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorator="base"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hospital - Interactive diagnose</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="js/diagnose.js"></script>
+</head>
+<div layout:fragment="content">
+    <h1>Interactive diagnose</h1>
+    <form class="diagnose-interactive-form form-horizontal">
+        <h4>Choose the patient to diagnose</h4>
+        <select class="form-control">
+            <option th:attr="value=${patient.getId()}" th:each="patient : ${patientList}" th:inline="text">[[${patient.getFirst_name()}]] [[${patient.getLast_name()}]]</option>
+        </select>
+        <div class="diagnose-questions">
+
+        </div>
+    </form>
+</div>
+</html>

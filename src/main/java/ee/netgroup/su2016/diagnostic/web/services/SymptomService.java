@@ -2,6 +2,7 @@ package ee.netgroup.su2016.diagnostic.web.services;
 
 import ee.netgroup.su2016.diagnostic.web.dto.SymptomDTO;
 import ee.netgroup.su2016.diagnostic.web.models.Disease;
+import ee.netgroup.su2016.diagnostic.web.models.Patient;
 import ee.netgroup.su2016.diagnostic.web.models.Symptom;
 import ee.netgroup.su2016.diagnostic.web.repositories.DiseaseRepository;
 import ee.netgroup.su2016.diagnostic.web.repositories.SymptomRepository;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by pagulane on 23.06.2016.
@@ -28,8 +30,19 @@ public class SymptomService {
         return symptomRepository.count();
     }
 
-    public List<Symptom> getThreePopularSymptoms(){
-        return null;
+    public Object[] getThreePopularSymptoms(){
+        TreeMap<Symptom, Integer> symptomMap = new TreeMap<>();
+        for(Disease disease: diseaseRepository.findAll()){
+            for(Symptom symptom: disease.getSymptoms()){
+                if(symptomMap.containsKey(symptom)){
+                    symptomMap.put(symptom, symptomMap.get(symptom) + 1);
+                }else{
+                    symptomMap.put(symptom, 1);
+                }
+            }
+        }
+        return symptomMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(3).map(Map.Entry::getKey).toArray();
     }
 
     public Object[] getThreeDiseasesWithMostSymptoms(){

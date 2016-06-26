@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 
 @Entity
-public class Symptom {
+public class Symptom implements Comparable<Symptom>{
 
     @Id
     @Setter @Getter
@@ -20,4 +20,9 @@ public class Symptom {
     @Column
     @Setter @Getter
     private String name;
+
+    @Override
+    public int compareTo(Symptom symptom) {
+        return this.name.compareTo(symptom.getName());
+    }
 }
