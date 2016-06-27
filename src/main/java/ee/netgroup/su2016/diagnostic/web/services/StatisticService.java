@@ -1,6 +1,5 @@
 package ee.netgroup.su2016.diagnostic.web.services;
 
-import ee.netgroup.su2016.diagnostic.web.dto.SymptomDTO;
 import ee.netgroup.su2016.diagnostic.web.models.Disease;
 import ee.netgroup.su2016.diagnostic.web.models.Patient;
 import ee.netgroup.su2016.diagnostic.web.models.Symptom;
@@ -18,7 +17,7 @@ import java.util.stream.Collectors;
  */
 
 @Service
-public class SymptomService {
+public class StatisticService {
 
     @Autowired
     SymptomRepository symptomRepository;

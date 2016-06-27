@@ -8,14 +8,20 @@
 </head>
 <div layout:fragment="content">
     <h1>Interactive diagnose</h1>
-    <form class="diagnose-interactive-form form-horizontal">
+    <form class="diagnose-interactive-form form-horizontal" method="post">
         <h4>Choose the patient to diagnose</h4>
         <select class="form-control">
             <option th:attr="value=${patient.getId()}" th:each="patient : ${patientList}" th:inline="text">[[${patient.getFirst_name()}]] [[${patient.getLast_name()}]]</option>
         </select>
         <div class="diagnose-questions">
-
+            <div th:inline="text" class="panel panel-default">
+                [[${firstSymptom.getName()}]]
+                <button th:attr="value=${firstSymptom.getId()}" onclick="addFilterYes(this)" type="button" class="btn btn-secondary">Yes</button>
+                <button onclick="addFilterNo()" type="button" class="btn btn-secondary">No</button>
+            </div>
         </div>
+        <div class="input-fields"></div>
+        <button type="submit" class="btn btn-primary">Test</button>
     </form>
 </div>
 </html>

@@ -1,7 +1,6 @@
 package ee.netgroup.su2016.diagnostic.web.controllers;
 
-import ee.netgroup.su2016.diagnostic.web.models.Disease;
-import ee.netgroup.su2016.diagnostic.web.services.SymptomService;
+import ee.netgroup.su2016.diagnostic.web.services.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StatisticController {
 
     @Autowired
-    SymptomService symptomService;
+    StatisticService statisticService;
 
     @RequestMapping(path = "statistics")
     public String getStatistics(Model model){
-        model.addAttribute("symptomCount", symptomService.countSymptoms());
-        model.addAttribute("mostSymptoms", symptomService.getThreeDiseasesWithMostSymptoms());
-        model.addAttribute("popularSymptoms", symptomService.getThreePopularSymptoms());
+        model.addAttribute("symptomCount", statisticService.countSymptoms());
+        model.addAttribute("mostSymptoms", statisticService.getThreeDiseasesWithMostSymptoms());
+        model.addAttribute("popularSymptoms", statisticService.getThreePopularSymptoms());
         return "statistics";
     }
 }

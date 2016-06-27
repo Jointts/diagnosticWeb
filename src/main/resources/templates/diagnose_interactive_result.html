@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div th:if="${suggestedSymptom != null}" class="newSymptom">
+        <span th:inline="text">[[${suggestedSymptom.getName()}]]</span>
+        <button th:attr="value=${suggestedSymptom.getId()}" onclick="addFilterYes(this)" type="button" class="btn btn-secondary">Yes</button>
+        <button onclick="addFilterNo()" type="button" class="btn btn-secondary">No</button>
+    </div>
+    <div th:if="${suggestedSymptom != null}">
+        <h4 th:text="${diagnosedDisease}"></h4>
+    </div>
+</html>

@@ -32,5 +32,21 @@ $(document).ready(function(){
     });
 });
 
+function addFilterYes(obj){
+    $(".input-fields").append("<input type='hidden' name='test' value=" + $(obj).attr('value') + ">");
+    $.ajax({
+        type: "POST",
+        data: $(".diagnose-interactive-form").serialize(),
+        success: function (data) {
+            alert(data);
+            $(".panel.panel-default").html(data);
+        }
+    })
+}
+
+function addFilterNo(){
+    $(".input-fields").append("<input type='hidden' name='test' value='-1'>")
+}
+
 
 
